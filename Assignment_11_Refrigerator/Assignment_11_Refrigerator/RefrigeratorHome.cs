@@ -30,8 +30,18 @@ namespace Assignment_10_Vehicle
             refrigerator.WeightUnit = Convert.ToDouble(textBoxWeightPerUnit.Text);
             textBoxNoOfItems.Clear();
             textBoxWeightPerUnit.Clear();
-            textBoxCurrentWeight.Text = Convert.ToString(refrigerator.CurrentWeight());
-            textBoxRemainingWeight.Text = Convert.ToString(refrigerator.RemainingWeight());
+            if (refrigerator.WeightTotal<refrigerator.CurrentWeight())
+            {
+                textBoxCurrentWeight.Clear();
+                textBoxRemainingWeight.Clear();
+                MessageBox.Show("Overflow!");
+            }
+            else
+            {
+                textBoxCurrentWeight.Text = Convert.ToString(refrigerator.CurrentWeight());
+                textBoxRemainingWeight.Text = Convert.ToString(refrigerator.RemainingWeight());
+            }
+
         }
     }
 }
