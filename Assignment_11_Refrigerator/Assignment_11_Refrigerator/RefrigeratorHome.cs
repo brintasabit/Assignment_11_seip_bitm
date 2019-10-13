@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Assignment_11_Refrigerator;
+using Exception = System.Exception;
 
 namespace Assignment_10_Vehicle
 {
@@ -26,22 +27,28 @@ namespace Assignment_10_Vehicle
 
         private void ButtonEnter_Click(object sender, EventArgs e)
         {
-            refrigerator.Item = Convert.ToInt32(textBoxNoOfItems.Text);
-            refrigerator.WeightUnit = Convert.ToDouble(textBoxWeightPerUnit.Text);
-            textBoxNoOfItems.Clear();
-            textBoxWeightPerUnit.Clear();
-            if (refrigerator.WeightTotal<refrigerator.CurrentWeight())
+            try
             {
-                textBoxCurrentWeight.Clear();
-                textBoxRemainingWeight.Clear();
-                MessageBox.Show("Overflow!");
+                refrigerator.Item = Convert.ToInt32(textBoxNoOfItems.Text);
+                refrigerator.WeightUnit = Convert.ToDouble(textBoxWeightPerUnit.Text);
+                textBoxNoOfItems.Clear();
+                textBoxWeightPerUnit.Clear();
+                if (refrigerator.WeightTotal < refrigerator.CurrentWeight())
+                {
+                    textBoxCurrentWeight.Clear();
+                    textBoxRemainingWeight.Clear();
+                    MessageBox.Show("Overflow!");
+                }
+                else
+                {
+                    textBoxCurrentWeight.Text = Convert.ToString(refrigerator.CurrentWeight());
+                    textBoxRemainingWeight.Text = Convert.ToString(refrigerator.RemainingWeight());
+                }
             }
-            else
+            catch (Exception exception)
             {
-                textBoxCurrentWeight.Text = Convert.ToString(refrigerator.CurrentWeight());
-                textBoxRemainingWeight.Text = Convert.ToString(refrigerator.RemainingWeight());
+                MessageBox.Show(exception.Message);
             }
-
         }
     }
 }
