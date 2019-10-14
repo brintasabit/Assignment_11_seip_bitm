@@ -21,8 +21,16 @@ namespace Assignment_10_Vehicle
         Refrigerator refrigerator=new Refrigerator();
         private void ButtonSave_Click(object sender, EventArgs e)
         {
-            refrigerator.WeightTotal = Convert.ToDouble(textBoxMaximumWeight.Text);
-            textBoxMaximumWeight.Clear();
+            try
+            {
+                refrigerator.WeightTotal = Convert.ToDouble(textBoxMaximumWeight.Text);
+                textBoxMaximumWeight.Clear();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+
         }
 
         private void ButtonEnter_Click(object sender, EventArgs e)

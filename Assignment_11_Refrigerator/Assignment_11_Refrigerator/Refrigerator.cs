@@ -15,6 +15,16 @@ namespace Assignment_11_Refrigerator
         private double currentWeight;
         private double remainingWeight;
 
+        public Refrigerator()
+        {
+
+        }
+
+        public Refrigerator(int item,double weightUnit)
+        {
+            this.item = item;
+            this.weightUnit = weightUnit;
+        }
         public double WeightTotal
         {
             get => weightTotal;
