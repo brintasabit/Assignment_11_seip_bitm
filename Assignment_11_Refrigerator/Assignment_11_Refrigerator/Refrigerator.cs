@@ -12,7 +12,7 @@ namespace Assignment_11_Refrigerator
         private double weightTotal;
         private int item;
         private double weightUnit;
-        private double currentWeight;
+        public double currentWeight { get; set; }
         private double remainingWeight;
 
         public Refrigerator()
@@ -42,25 +42,30 @@ namespace Assignment_11_Refrigerator
             get => weightUnit;
             set => weightUnit = value;
         }
+        List<double> currentWeights=new List<double>();
+
+
+        //public void CurrentWeights()
+        //{
+        //    double cw = Item * WeightUnit;
+        //    currentWeights.Add(cw);
+        //    //double cWeight=currentWeights.Sum();
+        //    //return cWeight;
+        //}
         public double CurrentWeight()
         {
-            try
-            {
-                currentWeight = Item * WeightUnit;
-                return currentWeight;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+            double cw = Item * WeightUnit;
+            currentWeights.Add(cw);
+            //double cws=currentWeights.Sum();
+            return cw;
         }
+
 
         public double RemainingWeight()
         {
             try
             {
-                remainingWeight = WeightTotal - CurrentWeight();
+                remainingWeight = WeightTotal - currentWeights.Sum();
                 return remainingWeight;
             }
             catch (Exception e)

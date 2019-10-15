@@ -19,6 +19,7 @@ namespace Assignment_10_Vehicle
             InitializeComponent();
         }
         Refrigerator refrigerator=new Refrigerator();
+        List<double> cws=new List<double>();
         private void ButtonSave_Click(object sender, EventArgs e)
         {
             try
@@ -41,7 +42,9 @@ namespace Assignment_10_Vehicle
                 refrigerator.WeightUnit = Convert.ToDouble(textBoxWeightPerUnit.Text);
                 textBoxNoOfItems.Clear();
                 textBoxWeightPerUnit.Clear();
-                if (refrigerator.WeightTotal < refrigerator.CurrentWeight())
+               // refrigerator.CurrentWeight();
+                cws.Add(refrigerator.CurrentWeight());
+                if (refrigerator.WeightTotal < cws.Sum() )
                 {
                     textBoxCurrentWeight.Clear();
                     textBoxRemainingWeight.Clear();
@@ -49,7 +52,7 @@ namespace Assignment_10_Vehicle
                 }
                 else
                 {
-                    textBoxCurrentWeight.Text = Convert.ToString(refrigerator.CurrentWeight());
+                    textBoxCurrentWeight.Text = Convert.ToString(cws.Sum());
                     textBoxRemainingWeight.Text = Convert.ToString(refrigerator.RemainingWeight());
                 }
             }
