@@ -56,10 +56,14 @@ namespace Assignment_11_Refrigerator
         {
             double cw = Item * WeightUnit;
             currentWeights.Add(cw);
-            //double cws=currentWeights.Sum();
-            return cw;
+            double cws=currentWeights.Sum();
+            return cws;
         }
 
+        public double CwList()
+        {
+            return currentWeights.Sum();
+        }
 
         public double RemainingWeight()
         {

@@ -43,8 +43,8 @@ namespace Assignment_10_Vehicle
                 textBoxNoOfItems.Clear();
                 textBoxWeightPerUnit.Clear();
                // refrigerator.CurrentWeight();
-                cws.Add(refrigerator.CurrentWeight());
-                if (refrigerator.WeightTotal < cws.Sum() )
+                //cws.Add(refrigerator.CurrentWeight());
+                if (refrigerator.WeightTotal < refrigerator.CurrentWeight() )
                 {
                     textBoxCurrentWeight.Clear();
                     textBoxRemainingWeight.Clear();
@@ -52,7 +52,7 @@ namespace Assignment_10_Vehicle
                 }
                 else
                 {
-                    textBoxCurrentWeight.Text = Convert.ToString(cws.Sum());
+                    textBoxCurrentWeight.Text = Convert.ToString(refrigerator.CwList());
                     textBoxRemainingWeight.Text = Convert.ToString(refrigerator.RemainingWeight());
                 }
             }
